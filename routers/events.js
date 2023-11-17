@@ -8,7 +8,6 @@ const router = express.Router();
 const eventsController = require("../controllers/eventsController");
 
 
-
 // CREO LE ROTTE
 
 // index
@@ -17,7 +16,6 @@ router.get("/", eventsController.index);
 router.post("/", eventsController.store);
 // update
 router.put("/:event", eventsController.update);
-
 
 // esporto l'istanza
 module.exports = router;

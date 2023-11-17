@@ -7,6 +7,12 @@ const dotenv = require('dotenv').config();
 const homeController = require("./controllers/home");
 // router
 const eventsRouter = require("./routers/events");
+// MIDDLEWARES
+// error
+// 404
+const { errorsFormatterMiddleware } = require('./middlewares/errorsFormatter');
+// 404
+const { routeNotFoundMiddleware } = require('./middlewares/routeNotFound');
 
 
 // ISTANZA EXPRESS
@@ -21,6 +27,12 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", homeController.index);
 
 app.use("/events", eventsRouter);
+
+// GESTIONE DEGLI ERRORI
+// middleware error
+app.use(errorsFormatterMiddleware);
+// // middleware 404
+app.use(routeNotFoundMiddleware);
 
 
 // avviamo il nostro server mettendolo in ascolto
