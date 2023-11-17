@@ -12,6 +12,11 @@ const eventsRouter = require("./routers/events");
 // ISTANZA EXPRESS
 const app = express();
 
+// configuro express per la lettura dei dati JSON
+app.use(express.json());
+// configuro express per la lettura dei dati x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }));
+
 // usiamo la nostra istanza per definire le rotte
 app.get("/", homeController.index);
 

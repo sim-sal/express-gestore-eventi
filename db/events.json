@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Primo Evento",
+    "description": "Bello bello!",
+    "date": "Il giorno di mai e il Mese di poi...",
+    "maxSeats": 100
+  },
+  {
+    "id": 2,
+    "title": "Secondo Evento",
+    "description": "Maronn cche bbbelllll",
+    "date": "boooooh",
+    "maxSeats": "100"
+  }
+]
