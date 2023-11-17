@@ -52,23 +52,32 @@ class Event {
     }
 
     // Metodo per ottenere tutti gli eventi
-    static getAllEvents() {
+    static getAllEvents(filters = {}) {
         try {
-            // Leggi gli eventi correnti dal file
-            return require("../db/events.json");
+            // Leggo il db
+            const events = require("../db/events.json");
+
+            // Applico i filtri, se presenti
+            if (filters.id) {
+                // Filtra per ID se specificato
+                return events.filter((event) => event.id === parseInt(filters.id));
+            } else {
+                // Altrimenti restituisco tutti gli eventi
+                return events;
+            }
         } catch (error) {
             console.error("Errore durante il recupero degli eventi:", error);
             return [];
         }
-
     }
+
     // Metodo per la scrittura su file
     static async store(req) {
         try {
             // Ottenere gli eventi correnti
             const events = Event.getAllEvents();
 
-            // Recupero gli id di events
+            // Recupero gli id degli eventi
             let idList = events.map((event) => event.id);
 
             // Ordino gli id in ordine decrescente
