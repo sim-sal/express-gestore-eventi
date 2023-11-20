@@ -59,9 +59,15 @@ class Event {
 
             // Applico i filtri, se presenti
             if (filters.id) {
-                // Filtra per ID se specificato
+                // Filtro per ID se specificato
                 return events.filter((event) => event.id === parseInt(filters.id));
-            } else {
+            }
+            if (filters.title) {
+                // Filtro per title se specificato
+                const titleToSearch = filters.title.toLowerCase();
+                return events.filter((event) => event.title.toLowerCase().includes(titleToSearch));
+            }
+            else {
                 // Altrimenti restituisco tutti gli eventi
                 return events;
             }
